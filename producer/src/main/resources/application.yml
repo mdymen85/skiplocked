@@ -1,0 +1,13 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    driver-classe-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_POST:3306}/${MYSQL_DB:skiplocked}?allowPublicKeyRetrieval=true&autoReconnect=true
+    username: ${MYSQL_USERNAME:root}
+    password: ${MYSQL_PASSWORD:mdymen_pass}
+  jpa:
+    show-sql: true
+  main:
+    allow-circular-references: true
