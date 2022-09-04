@@ -15,8 +15,10 @@ create table datatable
 -- auto-generated definition
 create table datatable_outbox
 (
-    id   bigint auto_increment
+    id      bigint auto_increment
         primary key,
-    data varchar(100) not null
+    data    varchar(100) not null,
+    created mediumtext   null
 );
+
 

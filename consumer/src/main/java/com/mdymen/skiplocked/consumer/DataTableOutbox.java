@@ -1,14 +1,14 @@
-package com.mdymen.skiplocked.producer;
+package com.mdymen.skiplocked.consumer;
 
 import lombok.Data;
-import org.hibernate.annotations.CreationTimestamp;
+import lombok.ToString;
 
 import javax.persistence.*;
-import java.time.Instant;
 
 @Entity
 @Table(name = "datatable_outbox")
 @Data
+@ToString
 public class DataTableOutbox {
 
     @Id
@@ -16,9 +16,6 @@ public class DataTableOutbox {
     private Long id;
 
     private String data;
-
-    @CreationTimestamp
-    private Instant created;
 
     public DataTableOutbox(String data) {
         this.data = data;
