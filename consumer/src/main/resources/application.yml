@@ -1,5 +1,5 @@
 server:
-  port: 8083
+  port: 8087
 
 spring:
   datasource:
@@ -9,6 +9,12 @@ spring:
     password: ${MYSQL_PASSWORD:mdymen_pass}
   jpa:
     show-sql: true
-    maxResults: 1
+    maxResults: 1000
   main:
     allow-circular-references: true
+  application:
+    name: skippedlock-consumer
+
+logging:
+  level:
+    root: INFO

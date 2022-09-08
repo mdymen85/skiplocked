@@ -8,17 +8,23 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="producer" />
+        <module name="kafka.consumer" />
+        <module name="messagerelayer" />
         <module name="consumer" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="consumer" target="17" />
+      <module name="kafka.consumer" target="17" />
+      <module name="messagerelayer" target="17" />
       <module name="producer" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="consumer" options="-parameters" />
+      <module name="kafka.consumer" options="-parameters" />
+      <module name="messagerelayer" options="-parameters" />
       <module name="producer" options="-parameters" />
     </option>
   </component>

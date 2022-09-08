@@ -1,0 +1,24 @@
+spring:
+  kafka:
+    producer:
+      bootstrap-servers: ${BOOTSTRAP_SERVER:127.0.0.1:9092}
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: com.mdymen.skiplocked.messagerelayer.EventSerializer
+    topic: ${TOPIC:skiplocked-topic}
+  datasource:
+    driver-classe-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/${MYSQL_DB:camel}?allowPublicKeyRetrieval=true&autoReconnect=true
+    username: ${MYSQL_USERNAME:root}
+    password: ${MYSQL_PASSWORD:mdymen_pass}
+  jpa:
+    show-sql: true
+  main:
+    allow-circular-references: true
+  application:
+    name: message-relayer
+
+server:
+  port: 8091
+
+
+
