@@ -1,9 +1,11 @@
+
 spring:
   kafka:
-    producer:
+    consumer:
       bootstrap-servers: ${BOOTSTRAP_SERVER:127.0.0.1:9092}
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: com.mdymen.skiplocked.messagerelayer.EventSerializer
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: com.mdymen.skiplocked.kafka.consumer.EventDeserializer
+      group-id: group
     topic: ${TOPIC:skiplocked-topic}
   datasource:
     driver-classe-name: com.mysql.jdbc.Driver
@@ -15,10 +17,7 @@ spring:
   main:
     allow-circular-references: true
   application:
-    name: message-relayer
+    name: kafka.consumer
 
 server:
-  port: 8091
-
-
-
+  port: 8092

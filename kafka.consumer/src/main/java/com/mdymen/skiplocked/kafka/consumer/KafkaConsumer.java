@@ -15,7 +15,7 @@ public class KafkaConsumer {
 
     private final DataTableResultRepository dataTableResultRepository;
 
-    @KafkaListener(topics = "${spring.kafka.topic}", groupId = "g1")
+    @KafkaListener(topics = "skiplocked-topic", groupId = "group")
     public void consumer1(ConsumerRecord<String, EventProducer> record) {
 
         var result = record.value();

@@ -9,9 +9,9 @@ import org.springframework.kafka.annotation.EnableKafka;
 @EnableKafka
 public class KafkaConfig {
 
-    @Bean
-    public ObjectMapper mapper() {
-        return new ObjectMapper();
-    }
+//    @Bean
+//    public ObjectMapper mapper() {
+//        return new ObjectMapper();
+//    }
 
 }

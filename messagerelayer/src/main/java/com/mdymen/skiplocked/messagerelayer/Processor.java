@@ -29,7 +29,7 @@ public class Processor extends RouteBuilder {
                 .split(body()).streaming().stopOnException()
                 .process(new Process(topic))
                 .log("Message relayer : ${in.headers.data}")
-                .to("sql:delete from datatable_outbox where uuid = :#data")
+                .to("sql:delete from datatable_outbox where data = :#data")
                 .to("kafka:"+topic+"?brokers=" + bootstrapServer + "&keySerializer=org.apache.kafka.common.serialization.StringSerializer&valueSerializer=com.mdymen.skiplocked.messagerelayer.EventSerializer")
                 .end();
     }
