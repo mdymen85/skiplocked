@@ -1,15 +1,13 @@
 package com.mdymen.skiplocked.consumer;
 
+import com.mdymen.skiplocked.consumer.datasource.destiny.DataTableResultRepository;
+import com.mdymen.skiplocked.consumer.datasource.origin.DataTableOutboxRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.Assert;
 
 import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

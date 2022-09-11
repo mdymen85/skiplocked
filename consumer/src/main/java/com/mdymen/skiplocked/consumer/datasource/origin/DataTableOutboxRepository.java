@@ -1,5 +1,6 @@
-package com.mdymen.skiplocked.consumer;
+package com.mdymen.skiplocked.consumer.datasource.origin;
 
+import com.mdymen.skiplocked.consumer.DataTableOutbox;
 import org.springframework.data.repository.CrudRepository;
 
 public interface DataTableOutboxRepository extends CrudRepository<DataTableOutbox, Long> {

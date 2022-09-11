@@ -132,29 +132,27 @@ resource "aws_instance" "terraform_ec2_example" {
     user_data = each.value.script  
 }
 
-locals {
-
-     databases = [
-       {
-            db_name = "skiplocked_producer"
-       },
-       {
-            db_name = "skiplocked_consumer"
-       }
-     ]
-
-}
-
-resource "aws_db_instance" "relayer_database" {
-  for_each = {
-      for index, vm in local.databases:
-      index => vm
-  }
+resource "aws_db_instance" "skiplocked_destiny" {
   allocated_storage = 8
   engine = "mysql"
   engine_version = "8.0"
   instance_class = "db.t2.micro"
-  db_name = each.value.db_name
+  db_name = "skiplockedDestiny"
+  username = "root"
+  password = "mdymen_pass"
+  port = 3306
+  skip_final_snapshot = true
+  db_subnet_group_name = aws_db_subnet_group.db_subnet.id
+  vpc_security_group_ids = [aws_security_group.sg.id]
+  publicly_accessible = true
+}
+
+resource "aws_db_instance" "skiplocked_origin" {
+  allocated_storage = 8
+  engine = "mysql"
+  engine_version = "8.0"
+  instance_class = "db.t2.micro"
+  db_name = "skiplockedOrigin"
   username = "root"
   password = "mdymen_pass"
   port = 3306

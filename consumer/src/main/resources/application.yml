@@ -1,15 +1,24 @@
 server:
   port: 8087
 
+destiny:
+  driverClassName: com.mysql.jdbc.Driver
+  url: jdbc:mysql://${MYSQL_HOST_DESTINY:localhost}:${MYSQL_POST_DESTINY:3306}/${MYSQL_DB_DESTINY:skiplocked}?allowPublicKeyRetrieval=true&autoReconnect=true
+  username: ${MYSQL_USERNAME_DESTINY:root}
+  password: ${MYSQL_PASSWORD_DESTINY:mdymen_pass}
+
 spring:
   datasource:
-    driver-classe-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_POST:3306}/${MYSQL_DB:skiplocked}?allowPublicKeyRetrieval=true&autoReconnect=true
-    username: ${MYSQL_USERNAME:root}
-    password: ${MYSQL_PASSWORD:mdymen_pass}
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://${MYSQL_HOST_ORIGIN:localhost}:${MYSQL_POST_ORIGIN:3306}/${MYSQL_DB_ORIGIN:skiplocked}?allowPublicKeyRetrieval=true&autoReconnect=true
+    username: ${MYSQL_USERNAME_ORIGIN:root}
+    password: ${MYSQL_PASSWORD_ORIGIN:mdymen_pass}
   jpa:
     show-sql: true
     maxResults: 1000
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
   main:
     allow-circular-references: true
   application:
