@@ -46,6 +46,11 @@ resource "aws_route_table_association" "prod-crta-public-subnet-1"{
     route_table_id = aws_route_table.prod-public-crt.id
 }
 
+resource "aws_route_table_association" "prod-crta-public-subnet-2"{
+    subnet_id = aws_subnet.subnet_az2.id
+    route_table_id = aws_route_table.prod-public-crt.id
+}
+
 resource "aws_security_group" "sg" {
      vpc_id = aws_vpc.vpc.id
      ingress {
@@ -130,6 +135,7 @@ resource "aws_instance" "terraform_ec2_example" {
         Name = each.value.name
     }	
     user_data = each.value.script  
+    depends_on = [aws_db_instance.skiplocked_origin, aws_db_instance.skiplocked_destiny]
 }
 
 resource "aws_db_instance" "skiplocked_destiny" {
