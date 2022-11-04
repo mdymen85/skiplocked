@@ -1,0 +1,6 @@
+
+for jenkins file to send a remote command to an instance with the Name: exemplo, to execute the script in the path location
+
+aws ssm send-command --document-name "AWS-RunDocument" --document-version "1" --targets '[{"Key":"tag:Name","Values":["exemplo"]}]' 
+--parameters '{"sourceType":["S3"],"sourceInfo":["{\"path\":\"https://skiplocked-project.s3.amazonaws.com/script\"}"],"documentParameters":["{}"]}' 
+--timeout-seconds 600 --max-concurrency "50" --max-errors "0" --region us-east-1
