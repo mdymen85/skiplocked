@@ -1,6 +1,60 @@
 
-for jenkins file to send a remote command to an instance with the Name: exemplo, to execute the script in the path location
+------------------------- for jenkins file to send a remote command to an instance with the Name: exemplo, to execute the script in the path location
 
 aws ssm send-command --document-name "AWS-RunDocument" --document-version "1" --targets '[{"Key":"tag:Name","Values":["exemplo"]}]' 
 --parameters '{"sourceType":["S3"],"sourceInfo":["{\"path\":\"https://skiplocked-project.s3.amazonaws.com/script\"}"],"documentParameters":["{}"]}' 
 --timeout-seconds 600 --max-concurrency "50" --max-errors "0" --region us-east-1
+
+------------------------- jenkins file
+
+pipeline {
+    agent any
+    tools {
+        jdk 'java-17'
+        maven 'mvn-3.8.3'
+    }
+
+
+    stages {
+        stage('Push') {
+            steps {
+                sh 'java -version'
+                dir ('skiplocked/consumer') {
+                    sh 'mvn clean install -DskipTests=true'
+                }
+                dir ('skiplocked/producer') {
+                    sh 'mvn clean install -DskipTests=true'
+                }
+            }
+        }
+        stage('Publish') {
+            steps {
+                withAWS(credentials: 'aws2', region: 'us-east-1') {
+                    sh "/home/mtuser/Projetos/script1.sh"               ------------------- sudo chmod -R 777 ./script1.sh in order tu use the file
+                }
+            }
+        }
+                
+    }
+}
+
+
+----------------------------- policy to access the bucket
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "PublicRead",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": [
+                "s3:GetObject",
+                "s3:GetObjectVersion"
+            ],
+            "Resource": [
+                "arn:aws:s3:::DOC-EXAMPLE-BUCKET/*"
+            ]
+        }
+    ]
+}
