@@ -138,7 +138,6 @@ resource "aws_instance" "terraform_ec2_example" {
     tags = {
         Name = each.value.name
     }	
-    user_data = each.value.script  
     depends_on = [aws_db_instance.skiplocked_origin, aws_db_instance.skiplocked_destiny]
 }
 
