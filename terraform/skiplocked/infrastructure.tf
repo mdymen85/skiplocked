@@ -127,7 +127,7 @@ resource "aws_instance" "terraform_ec2_example" {
        for index, vm in local.ec2_instances:
        index => vm
     }
-    ami = "ami-09d3b3274b6c5daa"
+    ami = "ami-09d3b3274b6c5d4aa"
     instance_type = "t2.micro"
     private_ip = each.value.ip_address
     vpc_security_group_ids = [
