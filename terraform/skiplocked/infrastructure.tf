@@ -111,14 +111,12 @@ locals {
        {
             name = "skiplocked_producer",
             ip_address = "192.168.0.4",
-            depends_on = [],
-            script = file("${path.module}/data_skiplocked_producer.sh")  
+            depends_on = []
        },
         {
             name = "skiplocked_consumer",
             ip_address = "192.168.0.5",
-            depends_on = [],
-            script = file("${path.module}/data_skiplocked_consumer.sh")  
+            depends_on = []
        }
      ]
 
@@ -129,13 +127,13 @@ resource "aws_instance" "terraform_ec2_example" {
        for index, vm in local.ec2_instances:
        index => vm
     }
-    ami = "ami-0c2ab3b8efb09f272"
+    ami = "ami-09d3b3274b6c5daa"
     instance_type = "t2.micro"
     private_ip = each.value.ip_address
     vpc_security_group_ids = [
          aws_security_group.sg.id
     ]
-    key_name   = "mdymenOregonKey"    
+    key_name   = "mdymen2"    
     subnet_id = aws_subnet.subnet_az1.id
     tags = {
         Name = each.value.name
