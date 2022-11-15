@@ -1,3 +1,8 @@
+ provider "aws" {
+     region = "eu-east-1"
+     profile = "default"
+ }
+
 resource "aws_vpc" "vpc" {
   cidr_block = "192.168.0.0/22"
   enable_dns_hostnames = true
