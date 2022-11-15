@@ -1,3 +1,9 @@
+provider "aws" {
+  region                    = "us-east-1"
+  shared_credentials_files  = ["$HOME/workspace/credentials"]
+  profile                   = "default"
+}
+
 resource "aws_vpc" "vpc" {
   cidr_block = "192.168.0.0/22"
   enable_dns_hostnames = true
