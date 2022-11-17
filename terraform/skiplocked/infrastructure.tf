@@ -111,12 +111,14 @@ locals {
        {
             name = "skiplocked_producer",
             ip_address = "192.168.0.4",
-            depends_on = []
+            depends_on = [],
+            script = file("${path.module}/data_skiplocked_producer.sh")  
        },
         {
             name = "skiplocked_consumer",
             ip_address = "192.168.0.5",
-            depends_on = []
+            depends_on = [],
+            script = file("${path.module}/data_skiplocked_consumer.sh")
        }
      ]
 
@@ -138,6 +140,7 @@ resource "aws_instance" "terraform_ec2_example" {
     tags = {
         Name = each.value.name
     }	
+    user_data = each.value.script
     depends_on = [aws_db_instance.skiplocked_origin, aws_db_instance.skiplocked_destiny]
 }
 
