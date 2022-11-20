@@ -161,6 +161,7 @@ resource "aws_db_instance" "skiplocked_destiny" {
   db_subnet_group_name = aws_db_subnet_group.db_subnet.id
   vpc_security_group_ids = [aws_security_group.sg.id]
   publicly_accessible = true
+  name = "skiplocekd_destiny"
 }
 
 resource "aws_db_instance" "skiplocked_origin" {
@@ -176,4 +177,5 @@ resource "aws_db_instance" "skiplocked_origin" {
   db_subnet_group_name = aws_db_subnet_group.db_subnet.id
   vpc_security_group_ids = [aws_security_group.sg.id]
   publicly_accessible = true
+  name = "skiplocekd_origin"
 }
