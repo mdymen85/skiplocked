@@ -153,7 +153,6 @@ resource "aws_db_instance" "skiplocked_destiny" {
   engine = "mysql"
   engine_version = "8.0"
   instance_class = "db.t2.micro"
-  db_name = "skiplockedDestiny"
   username = "root"
   password = "mdymen_pass"
   port = 3306
@@ -161,7 +160,7 @@ resource "aws_db_instance" "skiplocked_destiny" {
   db_subnet_group_name = aws_db_subnet_group.db_subnet.id
   vpc_security_group_ids = [aws_security_group.sg.id]
   publicly_accessible = true
-  name = "skiplocekd_destiny"
+  identifier = "skiplocked_destiny"
 }
 
 resource "aws_db_instance" "skiplocked_origin" {
@@ -169,7 +168,6 @@ resource "aws_db_instance" "skiplocked_origin" {
   engine = "mysql"
   engine_version = "8.0"
   instance_class = "db.t2.micro"
-  db_name = "skiplockedOrigin"
   username = "root"
   password = "mdymen_pass"
   port = 3306
@@ -177,5 +175,5 @@ resource "aws_db_instance" "skiplocked_origin" {
   db_subnet_group_name = aws_db_subnet_group.db_subnet.id
   vpc_security_group_ids = [aws_security_group.sg.id]
   publicly_accessible = true
-  name = "skiplocekd_origin"
+  identifier = "skiplocked_origin"
 }
