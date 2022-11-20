@@ -120,7 +120,9 @@ locals {
             name = "skiplocked_consumer",
             ip_address = "192.168.0.5",
             depends_on = [],
-            script = file("${path.module}/data_skiplocked_consumer.sh")
+            script = templatefile("${path.module}/data_skiplocked_consumer.sh", 
+              { database_origin = aws_db_instance.skiplocked_origin.address, 
+                database_destiny = aws_db_instance.skiplocked_destiny.address })
        }
      ]
 
