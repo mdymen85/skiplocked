@@ -1,4 +1,4 @@
-package com.mdymen.skiplocked.consumer;
+package com.mdymen.skiplocked.consumer.datasource.origin;
 
 import lombok.Data;
 import lombok.ToString;

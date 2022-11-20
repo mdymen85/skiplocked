@@ -9,12 +9,12 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import javax.sql.DataSource;
 
-@Configuration
-@EnableJpaRepositories(
-        basePackages = {"com.mdymen.skiplocked.consumer.datasource.destiny"}
-)
-@ConfigurationProperties(prefix = "destiny")
-@Data
+//@Configuration
+//@EnableJpaRepositories(
+//        basePackages = {"com.mdymen.skiplocked.consumer.datasource.destiny"}
+//)
+//@ConfigurationProperties(prefix = "destiny")
+//@Data
 public class DestinyDataSourceConfiguration {
 
 
@@ -23,7 +23,7 @@ public class DestinyDataSourceConfiguration {
     private String username;
     private String password;
 
-    @Bean
+    @Bean(name = "result")
     public DataSource getDataSourceDestiny() {
         DataSourceBuilder<?> dataSourceBuilder = DataSourceBuilder.create();
         dataSourceBuilder.driverClassName(driverClassName);

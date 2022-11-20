@@ -1,6 +1,7 @@
 package com.mdymen.skiplocked.consumer;
 
 import com.mdymen.skiplocked.consumer.datasource.destiny.DataTableResultRepository;
+import com.mdymen.skiplocked.consumer.datasource.origin.DataTableOutbox;
 import com.mdymen.skiplocked.consumer.datasource.origin.DataTableOutboxRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

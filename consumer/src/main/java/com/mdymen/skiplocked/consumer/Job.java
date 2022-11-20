@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.LockModeType;
+import java.sql.SQLException;
 import java.util.List;
 
 @Component
@@ -25,7 +26,7 @@ public class Job {
     private final SkipLockedService skipLockedService;
 
     @Scheduled(fixedDelayString = "${spring.job.fixedDelay:1000}")
-    public void job() throws InterruptedException {
+    public void job() throws InterruptedException, SQLException {
 
         log.info("init job");
 

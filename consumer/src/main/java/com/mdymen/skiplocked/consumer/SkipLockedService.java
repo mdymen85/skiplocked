@@ -1,6 +1,8 @@
 package com.mdymen.skiplocked.consumer;
 
+import com.mdymen.skiplocked.consumer.datasource.destiny.DataTableResult;
 import com.mdymen.skiplocked.consumer.datasource.destiny.DataTableResultRepository;
+import com.mdymen.skiplocked.consumer.datasource.origin.DataTableOutbox;
 import com.mdymen.skiplocked.consumer.datasource.origin.DataTableOutboxRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
 import javax.persistence.LockModeType;
+import java.sql.SQLException;
 import java.util.List;
 
 @Component
@@ -30,10 +33,7 @@ public class SkipLockedService {
     @Value("${spring.jpa.skipedlock.enabled:true}")
     private boolean skipedLock;
 
-    @Value("${spring.jpa.testingMode.sleep:90000}")
-    private long sleep;
-
-    public void job(Boolean testingPorpuse) throws InterruptedException {
+    public void job(Boolean testingPorpuse) throws InterruptedException, SQLException {
 
         scheduler_times = scheduler_times + 1;
 
@@ -45,8 +45,6 @@ public class SkipLockedService {
                 .setLockMode(LockModeType.PESSIMISTIC_WRITE)
                 .setHint("javax.persistence.lock.timeout", getLockOption())
                 .getResultList();
-
-        this.testingMode(testingPorpuse);
 
         log.info("processing...");
 
@@ -70,12 +68,4 @@ public class SkipLockedService {
         return skipedLock ? LockOptions.SKIP_LOCKED : LockOptions.WAIT_FOREVER;
     }
 
-    private void testingMode(Boolean testingMode) throws InterruptedException {
-        if (testingMode != null && testingMode) {
-            log.info("sleep mode in {}", sleep/1000);
-            Thread.sleep(sleep);
-        } else {
-            log.info("sleep mode disabled");
-        }
-    }
 }

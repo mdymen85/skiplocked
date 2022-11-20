@@ -1,6 +1,7 @@
 package com.mdymen.skiplocked.consumer;
 
 import com.mdymen.skiplocked.consumer.datasource.destiny.DataTableResultRepository;
+import com.mdymen.skiplocked.consumer.datasource.origin.DataTableOutbox;
 import com.mdymen.skiplocked.consumer.datasource.origin.DataTableOutboxRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.SQLException;
 import java.util.Iterator;
 import java.util.concurrent.CompletableFuture;
 
@@ -35,7 +37,7 @@ class ConsumerApplicationTests {
 	}
 
 	@Test
-	void contextLoads() throws InterruptedException {
+	void contextLoads() throws InterruptedException, SQLException {
 
 		this.proxySkipLockedServiceAsync.createData("Testing1", "Testing2");
 

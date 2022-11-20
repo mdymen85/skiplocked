@@ -1,5 +1,6 @@
-package com.mdymen.skiplocked.consumer;
+package com.mdymen.skiplocked.consumer.datasource.destiny;
 
+import com.mdymen.skiplocked.consumer.datasource.origin.DataTableOutbox;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.ToString;

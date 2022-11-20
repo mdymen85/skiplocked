@@ -9,12 +9,12 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import javax.sql.DataSource;
-
-@Configuration
-@EnableJpaRepositories(
-        basePackages = {"com.mdymen.skiplocked.consumer.datasource.origin"}
-)
-@ConfigurationProperties(prefix = "spring.datasource")
+//
+//@Configuration
+//@EnableJpaRepositories(
+//        basePackages = {"com.mdymen.skiplocked.consumer.datasource.origin"}
+//)
+//@ConfigurationProperties(prefix = "spring.datasource")
 @Data
 public class OriginDataSourceConfiguration {
 
