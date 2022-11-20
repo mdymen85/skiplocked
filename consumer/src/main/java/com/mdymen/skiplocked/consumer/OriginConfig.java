@@ -1,5 +1,6 @@
 package com.mdymen.skiplocked.consumer;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -24,6 +25,7 @@ import java.util.HashMap;
         entityManagerFactoryRef = "entityManagerFactory",
         transactionManagerRef = "transactionManager",
         basePackages = { "com.mdymen.skiplocked.consumer.datasource.origin" })
+@Slf4j
 public class OriginConfig {
 
     @Primary
@@ -44,6 +46,9 @@ public class OriginConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean
             (EntityManagerFactoryBuilder builder,
              @Qualifier("datasource") DataSource dataSource){
+
+        log.info("Origin database url: {} ", dataSourceProperties().determineUrl());
+
         return builder.dataSource(dataSource)
                 .packages("com.mdymen.skiplocked.consumer.datasource.origin")
                 .persistenceUnit("Song").build();
