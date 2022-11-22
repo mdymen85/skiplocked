@@ -3,14 +3,14 @@ server:
 
 destiny:
   driverClassName: com.mysql.jdbc.Driver
-  url: jdbc:mysql://${MYSQL_HOST_DESTINY:localhost}:${MYSQL_POST_DESTINY:3306}/${MYSQL_DB_DESTINY:skiplocked}?allowPublicKeyRetrieval=true&autoReconnect=true
+  url: jdbc:mysql://${MYSQL_DESTINY:localhost}:${MYSQL_POST_DESTINY:3306}/${MYSQL_DB_DESTINY:skiplocked}?allowPublicKeyRetrieval=true&autoReconnect=true
   username: ${MYSQL_USERNAME_DESTINY:root}
   password: ${MYSQL_PASSWORD_DESTINY:mdymen_pass}
 
 spring:
   datasource:
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://${MYSQL_HOST_ORIGIN:localhost}:${MYSQL_POST_ORIGIN:3306}/${MYSQL_DB_ORIGIN:skiplocked}?allowPublicKeyRetrieval=true&autoReconnect=true
+    url: jdbc:mysql://${MYSQL_ORIGIN:localhost}:${MYSQL_POST_ORIGIN:3306}/${MYSQL_DB_ORIGIN:skiplocked}?allowPublicKeyRetrieval=true&autoReconnect=true
     username: ${MYSQL_USERNAME_ORIGIN:root}
     password: ${MYSQL_PASSWORD_ORIGIN:mdymen_pass}
   jpa:
