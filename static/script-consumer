@@ -1,0 +1,11 @@
+schemaVersion: "2.2"
+description: "Example document"
+mainSteps:
+  - action: "aws:runShellScript"
+    name: "example"
+    inputs:
+      timeoutSeconds: '60'
+      runCommand:
+      - "wget https://skiplocked.s3.us-west-2.amazonaws.com/consumer-0.0.1-SNAPSHOT.jar"
+      - "source /etc/profile"
+      - "java -Dserver.port=8080 -jar consumer-0.0.1-SNAPSHOT.jar"
