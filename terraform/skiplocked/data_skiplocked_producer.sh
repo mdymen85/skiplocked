@@ -1,6 +1,8 @@
 #!/bin/bash
 sudo su
 yum update -y 
+echo export MYSQL_HOST=${database_origin} >> /etc/profile
+source /etc/profile
 yum install mariadb -y
 wget https://skiplocked.s3.us-west-2.amazonaws.com/producer_data.sql
 mysql -h ${database_origin} -P 3306 -u root -pmdymen_pass < producer_data.sql
